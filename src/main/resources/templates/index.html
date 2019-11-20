@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<style>
+.system{
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid #000;
+}
+.system a{
+    text-decoration:none;
+}
+.navigation{
+    width: 100%;
+    height: 28px;
+    background-color: rgb(8, 8, 8);
+}
+.navigation a{
+    color: rgb(247, 245, 245);
+}
+.system-lef{
+    float: left;
+    margin-left: 30px;
+}
+.system-rit{
+    float:right;
+    margin-right: 30px;
+}
+.system-rit span{
+  color: rgb(247, 245, 245);
+}
+.show{
+    margin-left: 380px;
+    margin-top: 20px;
+}
+.title {
+    margin-top: 50px;
+    text-align: center;
+}
+.war{
+    text-align: center;
+    margin-top: 50px;
+}
+.war span{
+    margin-top: -20px;
+}
+.nr{
+    margin-top: 50px;
+    text-align: center;
+}
+#hide{
+	width: 500px;
+    height: 200px;
+	background-color: #fff; 
+    background:url("images/yx.jpg");
+    background-size:500px 200px;
+	float:right;
+	color: rgb(241, 14, 14);
+}
+.hide_sty{
+	float:right;
+	color: rgb(13, 52, 230);
+}.io{
+float:left;
+display:block;
+width:70px;
+height:20px;
+}
+</style>
+</head>
+<body>
+    <div class="system">
+        <div class="navigation">
+            <div class="system-lef">
+                    <a href="http://www.18183.com/"><i class="system-lef-h5"></i>18183</a>
+                &nbsp;&nbsp;&nbsp;
+                    <a href="http://www.te5.com/">特玩网</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="http://www.wangye.cn/">网页下载</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="http://www.h5uc.com/">核弹头</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="https://wango.18183.com/">玩Go</a>
+            </div>
+            <div class="system-rit">
+             	<a href="#" th:text="${session.name}"></a>&nbsp;<span>登录成功</span>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#">退出登录</a>
+                &nbsp;&nbsp;&nbsp;
+                <a onMouseMove='showhidediv("hide")' href="#">网站导航</a>
+             </div>
+        </div>
+        <div id="hide" style="display: none;">
+        	<div  th:each="lolthe :${loltheme}">
+	        	<a href="#"><span th:text=${lolthe.theme_name}></span></a>
+	        	<div class="hide_sty"  th:each="LOL:${lolthe.title}">
+	        		  <span th:if="${lolthe.id eq LOL.theme_id}" th:text="${LOL.title_name}" class="io"></span>&nbsp;&nbsp;&nbsp;
+	        	</div>
+        	</div>
+        </div>
+        <div class="show">
+            <a href="#"><img src="images/log.png"></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span >英雄联盟全球总决赛</span>
+        </div>
+        <div class="title">
+            <a href="#">赛程</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#">排名</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#">新闻</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#">视频</a>
+        </div>
+        <div class="war">
+            <a id="igx" href="#"><img src="images/ig.jpg"  width=100px height=80px></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>半决赛</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a id="fpx" href="#"><img src="images/fpx.jpg" width=100px height=80px></a>
+        </div>
+        <div class="war">
+                <a href="#"><img src="images/skt.jpg"  width=100px height=80px></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>半决赛</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#"><img src="images/G2.jpg" width=100px height=80px></a>
+            </div>
+        <div class="war">
+                <a href="#"><img src="images/fpx.jpg"  width=100px height=80px></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>半决赛</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#"><img src="images/G2.jpg" width=100px height=80px></a>
+            </div>
+        <div class="nr">
+            <span>暂无更多内容</span>
+        </div>
+    </div>
+    <div class="conter"></div>
+ <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript"> 
+        $("#igx").click(function(event){
+        		event.preventDefault(); 
+        		//防止链接打开 URL，单页面刷新
+        		$(".show").css("display","none");  
+        		$(".title").css("display","none");
+        		$(".war").css("display","none");
+        		$(".nr").css("display","none");
+        		//.toggleClass() 如果存在（不存在）就删除（添加）  .siblings()被选元素的所有同级元素   .removeClass从被选元素移除一个或多个类
+        		//使用 HTTP GET 请求从服务器加载数据。
+        		$.get("queryigx",{
+        		},function(data){
+        			$(".conter").html(data);
+        		})
+        	})	
+       //鼠标放上去显示隐藏内容 	
+    function showhidediv(id){
+        var sbtitle=document.getElementById(id);
+        if(sbtitle){
+           if(sbtitle.style.display=='block'){
+           sbtitle.style.display='none'; 
+           }else{
+           sbtitle.style.display='block';
+           }
+        }
+        }
+        </script>
+</body>
+</html>

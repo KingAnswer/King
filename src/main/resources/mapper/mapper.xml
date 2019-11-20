@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.shixun.project.mapper.LolMapper">
+	<resultMap type="Theme" id="mysbuject" >
+		<result column="s_id" property="id"/>
+		<result column="theme_name" property="theme_name"/>
+		<collection  property="title" ofType="Title">
+			<result column="a_id" property="id"/>
+			<result column="title_name" property="title_name"/>
+			<result column="theme_id" property="theme_id"/>
+		</collection>
+	</resultMap>
+
+<select id="getallLOL" resultMap="mysbuject">
+SELECT 
+	s.id AS s_id,s.theme_name,a.id AS a_id,a.title_name,a.theme_id
+FROM 
+	theme s,title a
+</select>
+</mapper>
